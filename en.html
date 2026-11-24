@@ -1,0 +1,900 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+
+
+<style>
+body{margin:0}
+a{color:inherit}a:hover{color:#0f3d22}
+.sr{--paper:#ffffff;--ink:#0f3d22;--text:#2c3a31;--soft:#5b6a60;--sage:#50705a;--mist:#f3f6f1;--leaf:#3f8a2a;--line:#d8e0d6;background:var(--paper);color:var(--text);font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65}
+.sr *{box-sizing:border-box}
+.sr img{max-width:100%;height:auto;display:block}
+.sr section[id],.sr .case[id],.sr .heroband[id]{scroll-margin-top:96px}
+.sr :focus-visible{outline:3px solid var(--leaf);outline-offset:3px;border-radius:4px}
+.sr .wrap{width:100%;max-width:1120px;margin:0 auto;padding-left:16px;padding-right:16px}
+.sr h1,.sr h2,.sr h3{color:var(--ink);font-weight:800;line-height:1.12;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.sr h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+.sr h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px}
+.sr h3{font-size:1.15rem;font-weight:700;line-height:1.25}
+.sr p{margin:0 0 14px}
+.sr .kicker{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);margin:0 0 12px}
+.sr .lead{font-size:1.1rem;color:var(--soft);max-width:58ch}
+.sr section{padding-block:80px}
+.sr .tint{background:var(--mist)}
+.sr .top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.sr .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:10px;flex-wrap:wrap}
+.sr .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.sr .brand img{width:54px;height:54px;border-radius:50%}
+.sr .brand span{font-weight:800;color:var(--ink);font-size:.98rem}
+.sr .nav{display:flex;gap:6px 20px;flex-wrap:wrap;font-size:.86rem;font-weight:500}
+.sr .nav a{text-decoration:none;color:var(--soft);padding-block:4px;border-bottom:2px solid transparent}
+.sr .nav a:hover{color:var(--ink);border-bottom-color:var(--leaf)}
+.sr .nav a.lang{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-weight:700;font-size:.78rem;letter-spacing:.03em}
+.sr .nav a.lang:hover{border-color:var(--leaf);color:var(--leaf)}
+.sr .hero{position:relative;overflow:hidden}
+.sr .hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:150px;background:url("images/250521f9d0479674fb2daa9ce4a5a867.png") right center / auto 92% no-repeat;opacity:.34;-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent);mask-image:linear-gradient(to bottom,#000 70%,transparent);pointer-events:none}
+.sr .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center;padding-block:72px 80px}
+.sr .hero h1{margin-bottom:20px}
+.sr .hero .lead{color:var(--text)}
+.sr .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.sr .btn{display:inline-block;padding:13px 22px;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;border:2px solid var(--sage)}
+.sr .btn.solid{background:var(--sage);color:#fff}
+.sr .btn.solid:hover{background:#425f4b;border-color:#425f4b;color:#fff}
+.sr .btn.line{color:var(--sage);background:#fff}
+.sr .btn.line:hover{background:var(--mist)}
+.sr .heroimg{width:100%}
+.sr .heroimg .cmp{margin-top:0;aspect-ratio:1}
+.sr .heroimg .hint{color:var(--soft)}
+.sr .heroimg .cap{margin:0 0 10px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf)}
+.sr .casegrid{display:grid;grid-template-columns:minmax(0,1fr);gap:52px;align-items:center}
+.sr ul.casefacts{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid rgba(255,255,255,.25)}
+.sr ul.casefacts li{display:grid;grid-template-columns:10rem minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.25);font-size:.95rem}
+.sr ul.casefacts span{color:#dbe7dc}
+.sr ul.casefacts strong{color:#fff;font-weight:700}
+.sr .btn.light{background:#fff;color:var(--ink);border-color:#fff}
+.sr .btn.light:hover{background:var(--mist);color:var(--ink)}
+.sr .ggroup{margin-top:36px}
+.sr .ggroup h3{margin-bottom:14px}
+.sr .ggrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.sr .gitem{display:block;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:zoom-in;font:inherit;color:inherit}
+.sr .gitem img{width:100%;aspect-ratio:4 / 3;object-fit:cover;border-radius:8px;background:var(--line);transition:transform .2s}
+.sr .gitem:hover img{transform:scale(1.02)}
+.sr .gitem span{display:block;margin-top:6px;font-size:.84rem;color:var(--soft);line-height:1.35}
+.sr .gwrap{overflow:hidden;margin-top:14px;cursor:pointer;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.sr .gtrack{display:flex;align-items:center;gap:16px;width:max-content;padding-block:56px}
+.sr .gwrap:not(.reduced) .gtrack{animation:sr-gal 48s linear infinite}
+@media (hover:hover){.sr .gwrap:hover .gtrack{animation-play-state:paused}}
+.sr .gwrap:focus-within .gtrack,.sr .gwrap.tap-paused .gtrack{animation-play-state:paused}
+.sr .gtrack .gitem{flex:0 0 auto;width:220px;position:relative;transform-origin:center;transition:transform .12s ease-out,opacity .12s ease-out,margin .12s ease-out;will-change:transform}
+.sr .gtrack .gitem img{width:220px}
+.sr .gsolo{margin-top:14px}
+.sr .gsolo .gitem{max-width:480px}
+.sr .gsolo .gitem img{width:100%}
+@keyframes sr-gal{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:900px){.sr .gtrack .gitem,.sr .gtrack .gitem img{width:150px}}
+.sr .lb{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:56px 64px}
+.sr .lb-bg{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;background:rgba(10,25,15,.88);cursor:zoom-out}
+.sr .lb-fig{position:relative;margin:0;max-width:min(1000px,100%);display:grid;gap:10px;justify-items:center}
+.sr .lb-fig img{max-width:100%;max-height:calc(100vh - 170px);width:auto;height:auto;border-radius:8px;background:#000}
+.sr .lb-fig figcaption{color:#fff;text-align:center;display:grid;gap:2px}
+.sr .lb-fig figcaption span{color:#bfe0b0;font-size:.84rem}
+.sr .lb-btn{position:absolute;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.sr .lb-btn:hover{background:var(--mist)}
+.sr .lb-prev{left:12px;top:50%;margin-top:-24px}
+.sr .lb-next{right:12px;top:50%;margin-top:-24px}
+.sr .lb-close{right:12px;top:12px}
+.sr .figcap{margin:8px 0 0;font-size:.84rem;color:#dbe7dc}
+.sr .cmp-zoom{position:absolute;bottom:12px;right:12px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.sr .cmp-zoom:hover{background:var(--mist)}
+.sr .cmp-lb-inner{position:relative;width:100%;max-width:1100px}
+.sr .cmp-lb-inner .cmp{margin-top:0;aspect-ratio:16 / 9;width:100%}
+.sr .cmp-lb-hint{color:#fff;text-align:center;margin-top:14px;opacity:.85}
+@media (max-width:640px){.sr .cmp-lb-inner .cmp{aspect-ratio:4 / 3}}
+.sr .hero .wrap.herotext{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px 56px;align-items:end;padding-block:56px 40px}
+.sr .herotext h1{margin-bottom:0}
+.sr .herotext .actions{margin-top:20px}
+.sr .heroband{position:relative}
+.sr .heroband .cmp{margin:0;border-radius:0;aspect-ratio:auto;height:clamp(360px,58vh,620px)}
+.sr .heroband .cmp img{object-position:center 62%}
+.sr .heroband .lab{top:16px}
+.sr .bandcap{position:absolute;left:16px;bottom:16px;z-index:2;background:rgba(15,61,34,.88);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:4px;pointer-events:none}
+.sr .heroband .hint{color:var(--soft);margin:10px 0 0;padding-bottom:28px}
+.sr .emb{display:inline-block;margin-left:8px;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--sage);border-radius:4px;padding:2px 7px;vertical-align:middle}
+.sr ul.clients{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.sr ul.clients li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 16px;font-weight:700;font-size:.92rem;color:var(--ink)}
+.sr .contactgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:48px;align-items:start;margin-top:28px}
+.sr .contactgrid .reach{margin-top:0}
+.sr .quotebox{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--sage);border-radius:10px;padding:28px}
+.sr .qform{display:grid;gap:16px}
+.sr .qform h3,.sr .thanks h3{margin-bottom:0}
+.sr .formnote{margin:-8px 0 0;font-size:.84rem;color:var(--soft)}
+.sr .frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.sr .field{display:grid;gap:6px}
+.sr .field label{font-size:.84rem;font-weight:700;color:var(--ink)}
+.sr .field input,.sr .field select,.sr .field textarea{font:inherit;font-size:.95rem;color:var(--text);background:#fff;border:1px solid #9aa89e;border-radius:6px;padding:10px 12px;min-height:44px;width:100%}
+.sr .field textarea{resize:vertical}
+.sr .field input:focus,.sr .field select:focus,.sr .field textarea:focus{outline:3px solid #bfe0b0;border-color:var(--sage)}
+.sr .send{justify-self:start;cursor:pointer;font-family:inherit}
+.sr .thanks{display:grid;gap:12px;justify-items:start}
+.sr .thanks p{margin:0;color:var(--soft)}
+.sr .thanks .btn{cursor:pointer;font-family:inherit}
+.sr .wa{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;align-items:center;gap:8px;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;padding:12px 18px;min-height:48px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+.sr .wa:hover{background:#425f4b;color:#fff}
+.sr .band{background:var(--sage);color:#fff;padding-block:52px}
+.sr .band .kicker{color:#bfe0b0}
+.sr .areas{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.sr .area{display:block;text-decoration:none;color:#fff;border-top:3px solid #7fc063;padding-top:14px;transition:transform .2s}
+.sr .area:hover{transform:translateY(-3px);color:#fff}
+.sr .area b{display:block;font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.sr .area span{display:block;margin-top:6px;font-size:.86rem;color:#dbe7dc}
+.sr .area em{display:inline-block;margin-top:10px;font-style:normal;font-size:.78rem;font-weight:700;color:#bfe0b0;border-bottom:1px solid transparent}
+.sr .area:hover em{border-bottom-color:#bfe0b0}
+.sr .meta{margin:32px 0 0;display:flex;flex-wrap:wrap;gap:8px 36px;font-size:.92rem;color:#dbe7dc;padding-top:20px;border-top:1px solid rgba(255,255,255,.22)}
+.sr .meta strong{color:#fff;font-weight:800}
+.sr .cols2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.sr .panel{border:1px solid var(--line);border-radius:10px;padding:26px 28px;background:var(--paper)}
+.sr .panel h3{margin-bottom:12px}
+.sr ul.tick{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sr ul.tick li{position:relative;padding-left:24px}
+.sr ul.tick li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:3px;background:var(--leaf)}
+.sr .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:52px}
+.sr .pillar{border-top:2px solid var(--leaf);padding-top:14px}
+.sr .pillar h3{margin-bottom:8px}
+.sr .mv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.sr .mv-card{background:var(--mist);border-top:4px solid var(--sage);border-radius:10px;padding:26px 28px}
+.sr .mv-card h3{margin-bottom:10px}
+.sr .pillar p{margin:0;color:var(--soft);font-size:.95rem}
+.sr .svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+.sr .svc a{display:block;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:24px}
+.sr .svc a:hover{border-color:var(--sage)}
+.sr .svc a.main{border:2px solid var(--sage)}
+.sr .svc .tag{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf);margin:0 0 8px}
+.sr .svc h3{margin-bottom:8px}
+.sr .svc p{margin:0;color:var(--soft);font-size:.94rem}
+.sr .head{max-width:62ch;margin-bottom:40px}
+.sr .split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:52px;align-items:center}
+.sr .split.rev{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+.sr .photo{border-radius:10px;overflow:hidden}
+.sr .photo img{width:100%;height:auto}
+.sr .photorow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
+.sr .pcaps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+.sr .pcaps p.note,.sr .photorow p.note{text-align:center;margin-top:8px}
+.sr ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:s}
+.sr ol.steps li{position:relative;padding-left:52px;counter-increment:s}
+.sr ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--sage);color:#fff;font-weight:700;display:grid;place-items:center}
+.sr ol.steps strong{display:block;color:var(--ink);font-weight:700}
+.sr ol.steps span{color:var(--soft);font-size:.95rem}
+.sr .strip{margin-top:56px}
+.sr .strip .photo img{aspect-ratio:1400 / 343;object-fit:cover}
+.sr .strip ul{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.sr .strip li strong{display:block;color:var(--ink)}
+.sr .strip li span{color:var(--soft);font-size:.92rem}
+.sr .case{background:var(--sage);color:#fff;padding-block:72px}
+.sr .case .kicker{color:#bfe0b0}
+.sr .case h2{color:#fff}
+.sr .cmp{position:relative;margin-top:32px;width:100%;aspect-ratio:16 / 9;border-radius:10px;overflow:hidden;background:#000;touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none}
+.sr .cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.sr .cmp .seg{position:absolute;inset:0;pointer-events:none}
+.sr .cmp .lab{position:absolute;top:12px;background:#fff;color:var(--ink);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:4px;pointer-events:none;white-space:nowrap}
+.sr .cmp .handle{position:absolute;top:0;bottom:0;width:44px;margin-left:-22px;padding:0;border:0;background:transparent;cursor:ew-resize;touch-action:none}
+.sr .cmp .handle::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+.sr .cmp .handle::after{content:"\2194";position:absolute;top:50%;left:50%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:1.2rem;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.sr .cmp .handle:focus{outline:none}
+.sr .cmp .handle:focus-visible::after{outline:3px solid #bfe0b0;outline-offset:2px}
+.sr .hint{margin:10px 0 0;font-size:.84rem;color:#dbe7dc}
+.sr .specs{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}
+.sr .specs li{border-top:2px solid var(--leaf);padding-top:10px}
+.sr .specs strong{display:block;font-size:1.3rem;font-weight:800;color:var(--ink);line-height:1.2}
+.sr .specs span{font-size:.9rem;color:var(--soft)}
+.sr .parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}
+.sr .parts div{border-top:2px solid var(--leaf);padding-top:10px}
+.sr .parts strong{display:block;color:var(--ink)}
+.sr .parts span{color:var(--soft);font-size:.92rem}
+.sr .note{font-size:.92rem;color:var(--soft)}
+.sr .wide{margin-top:36px}
+.sr .tablewrap{overflow-x:auto;border-top:1px solid var(--line)}
+.sr table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:560px}
+.sr th{text-align:left;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:700;padding:12px 14px 12px 0;border-bottom:2px solid var(--sage)}
+.sr td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.sr td:first-child{font-weight:700;color:var(--ink)}
+.sr td.yr{white-space:nowrap;color:var(--leaf);font-weight:600;font-variant-numeric:tabular-nums}
+.sr .sub{margin:48px 0 16px;font-size:1.3rem}
+.sr .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.sr .chip{font:inherit;font-size:.84rem;font-weight:600;color:var(--sage);background:var(--paper);border:2px solid var(--sage);border-radius:999px;padding:6px 16px;min-height:44px;cursor:pointer}
+.sr .chip:hover{border-color:var(--ink)}
+.sr .chip.on{background:var(--sage);color:#fff}
+.sr .quote{max-width:70ch}
+.sr .team{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:36px}
+.sr .person img{width:100%;aspect-ratio:4 / 5;object-fit:cover;object-position:top;border-radius:10px;background:var(--mist)}
+.sr .person strong{display:block;margin-top:10px;color:var(--ink);line-height:1.3;font-size:.95rem}
+.sr .person span{font-size:.86rem;color:var(--soft)}
+.sr .founder{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start;margin-top:56px}
+.sr .founder img{width:100%;max-width:300px;height:auto;aspect-ratio:4 / 5;object-fit:cover;object-position:top;border-radius:10px;background:var(--mist)}
+.sr .timeline{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--line)}
+.sr .timeline li{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+.sr .timeline b{color:var(--leaf);font-variant-numeric:tabular-nums}
+.sr dl.facts{margin:0;border-top:1px solid var(--line)}
+.sr .row{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.sr .row dt{font-size:.84rem;color:var(--soft)}
+.sr .row dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.sr .contact{background:var(--mist)}
+.sr .reach{display:grid;gap:22px;margin-top:28px}
+.sr .reach .item small{display:block;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--soft);margin-bottom:4px}
+.sr .reach .big{font-size:clamp(1.1rem,3vw,1.5rem);font-weight:700;color:var(--ink);overflow-wrap:anywhere}
+.sr .reach .big.sec{font-size:clamp(1rem,2.4vw,1.2rem);font-weight:600}
+.sr .copy{font:inherit;font-size:.84rem;font-weight:700;color:var(--sage);background:transparent;border:2px solid var(--sage);border-radius:6px;padding:6px 14px;min-height:44px;cursor:pointer;margin-left:10px}
+.sr .copy:hover{background:#fff}
+.sr footer{padding-block:26px;font-size:.86rem;color:var(--soft);border-top:1px solid var(--line)}
+.sr footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sr .pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:8px}
+.sr .pcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sr .pwell{height:360px;display:grid;place-items:center;background:#fff;border-bottom:1px solid var(--line);padding:16px}
+.sr .pwell.mist{background:var(--mist)}
+.sr .pwell img{height:100%;width:auto;max-width:100%;object-fit:contain;min-height:0}
+.sr .galon{position:relative;flex:none}
+.sr .galon svg{position:absolute;inset:0}
+.sr .glabel{position:absolute;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.sr .pbody{display:flex;flex-direction:column;gap:6px;padding:24px 26px 26px;flex:1}
+.sr .pline{margin:0;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf)}
+.sr .pbody h3{font-size:1.7rem;font-weight:900;letter-spacing:.01em}
+.sr .ptype{margin:0;font-weight:700;color:var(--leaf)}
+.sr .puse{margin:6px 0 0;color:var(--text)}
+.sr .pres{display:flex;gap:10px;align-items:baseline;margin:10px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:.92rem}
+.sr .pres dt{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.sr .pres dd{margin:0;font-weight:700;color:var(--ink)}
+.sr .pact{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+.sr .pact .btn{cursor:pointer;font-family:inherit}
+.sr .btn.wab{display:inline-flex;align-items:center;gap:8px}
+.sr .more{font-weight:700;font-size:.9rem;color:var(--sage);text-decoration:none;border-bottom:2px solid transparent;padding-block:4px;margin-left:4px}
+.sr .more:hover{border-bottom-color:var(--leaf);color:var(--ink)}
+.sr .reqgrid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start;margin-top:56px;padding-top:48px;border-top:1px solid var(--line)}
+.sr .reqgrid h3{font-size:1.5rem;margin-bottom:10px}
+.sr .pchips{display:flex;flex-wrap:wrap;gap:8px}
+.sr .pfield{display:grid;gap:6px}
+.sr .pfield > span{font-size:.84rem;font-weight:700;color:var(--ink)}
+.sr .fixed{font-weight:800;color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:6px;padding:10px 12px;min-height:44px}
+.sr .pend{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7a5b00;background:#fff4cc;border:1px dashed #c9a227;border-radius:4px;padding:2px 8px;vertical-align:middle}
+.sr .pendrow{color:var(--soft)}
+#forestal{border-top:1px solid var(--line)}
+.sr ul.clients.per{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.sr ul.clients.per li span{display:block;margin-top:2px;font-size:.82rem;font-weight:600;color:var(--leaf);font-variant-numeric:tabular-nums}
+.sr .mqwrap{position:relative;overflow:hidden;margin:0 -4px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.sr .mqtrack{display:flex;width:max-content;gap:10px;animation:sr-mq 95s linear infinite;padding:4px}
+@media (hover:hover){.sr .mqwrap:hover .mqtrack{animation-play-state:paused}}
+.sr .mqwrap:focus-within .mqtrack,.sr .mqwrap.tap-paused .mqtrack{animation-play-state:paused}
+.sr .mqwrap{cursor:grab;touch-action:pan-y}
+.sr .mqwrap.mq-dragging{cursor:grabbing}
+.sr .mqcard{flex:0 0 auto;white-space:nowrap;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 16px;font-weight:700;font-size:.92rem;color:var(--ink)}
+.sr .mqcard span{display:block;margin-top:2px;font-size:.82rem;font-weight:600;color:var(--leaf);font-variant-numeric:tabular-nums;white-space:nowrap}
+@keyframes sr-mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.sr .mqtrack{animation:none}.sr .mqwrap{overflow-x:auto}}
+@media (max-width:900px){.sr .mqtrack{animation-duration:70s}}
+.sr .galon.foto > img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain}
+.sr .galon.foto .glabel{border-radius:3%/2.2%;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.sr .galon.foto .glabel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,0) 10%,rgba(255,255,255,.07) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,0) 88%,rgba(0,0,0,.22))}
+@media (max-width:900px){
+.sr ul.clients.per{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sr .pgrid,.sr .reqgrid{grid-template-columns:minmax(0,1fr);gap:24px}
+.sr .pwell{height:300px}
+}
+@media (max-width:900px){
+.sr section[id],.sr .case[id],.sr .heroband[id]{scroll-margin-top:150px}
+.sr section{padding-block:56px}
+.sr .hero .wrap{grid-template-columns:minmax(0,1fr);gap:32px;padding-block:44px 52px}
+.sr .casegrid{grid-template-columns:minmax(0,1fr);gap:28px}
+.sr .hero .wrap.herotext{grid-template-columns:minmax(0,1fr);padding-block:36px 28px;gap:16px}
+.sr .heroband .cmp{height:auto;aspect-ratio:4 / 3}
+.sr .bandcap{font-size:.68rem;padding:5px 10px;left:10px;bottom:10px}
+.sr .ggrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sr .lb{padding:64px 8px}
+.sr .lb-prev,.sr .lb-next{top:auto;bottom:12px;margin-top:0}
+.sr ul.casefacts li{grid-template-columns:minmax(0,1fr);gap:2px}
+.sr .heroimg .cmp{aspect-ratio:4 / 3}
+.sr .contactgrid,.sr .frow{grid-template-columns:minmax(0,1fr)}
+.sr .quotebox{padding:20px}
+.sr .wa span{display:none}
+.sr .wa{padding:12px}
+.sr .hero::before{width:90px;opacity:.26}
+.sr .areas{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sr .area:last-child{grid-column:1 / -1}
+.sr .cols2,.sr .split,.sr .split.rev,.sr .founder{grid-template-columns:minmax(0,1fr);gap:28px}
+.sr .pillars,.sr .svc,.sr .parts,.sr .mv,.sr .pcaps{grid-template-columns:minmax(0,1fr);gap:24px}
+.sr .photorow{grid-template-columns:minmax(0,1fr);gap:20px}
+.sr .strip ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sr .team{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sr .row{grid-template-columns:minmax(0,1fr);gap:2px}
+.sr .timeline li{grid-template-columns:minmax(0,1fr);gap:2px}
+.sr .cmp{aspect-ratio:4 / 3}
+}
+</style>
+</head><body>
+<template id="tpl">
+<div class="sr" style="width: 100%">
+<header class="top">
+<div class="wrap">
+<a class="brand" href="#inicio" aria-label="Agroforestal San Remo, home">
+<img src="images/98e64b6474c467ea1e4f56c2f063767c.jpg" alt="" width="42" height="42">
+<span>AGROFORESTAL SAN REMO C.A.</span>
+</a>
+<nav class="nav" aria-label="Main">
+<a href="#empresa">Company</a>
+<a href="#servicios">Services</a>
+<a href="#obras">Projects</a>
+<a href="#galeria">Gallery</a>
+<a href="#respaldo">Backing</a>
+<a href="#equipo">Team</a>
+<a href="#contacto">Contact</a>
+<a href="index.html" class="lang">ES</a>
+</nav>
+</div>
+</header>
+
+<main id="inicio">
+<div class="hero">
+<div class="wrap herotext">
+<div>
+<p class="kicker">Barcelona, Anzoátegui · Over 35 years of experience</p>
+<h1>We transform environmental liabilities into fertility and life</h1>
+</div>
+<div>
+<p class="lead">A Venezuelan agro-environmental company specialized in the bioremediation of soils impacted by hydrocarbons and agrochemicals, using proprietary technology.</p>
+<div class="actions">
+<a class="btn solid" href="#contacto">Contact us</a>
+<a class="btn line" href="#obras">See our track record</a>
+</div>
+</div>
+</div>
+<div class="heroband" id="comparar">
+<div class="cmp" data-on-pointerdown="{{down}}" data-on-pointermove="{{move}}" data-on-pointerup="{{up}}" data-on-pointercancel="{{up}}">
+<img src="images/c14de9a240be36fdd9b1970eb35b8bb2.jpg" alt="After: accelerated in-situ landfarming recovery in the GG-617 well area" width="770" height="720">
+<img src="images/40ccc13ac7a202a5083af97e43dcfe7c.jpg" alt="Before: the GG-617 well area with soil covered in hydrocarbons" width="960" height="720" style="clip-path: {{clipA}}">
+<div class="seg" style="clip-path: {{segA}}"><span class="lab" style="left: 12px">Before · Day 0</span></div>
+<div class="seg" style="clip-path: {{segC}}"><span class="lab" style="right: 12px">After · Day 38</span></div>
+<span class="bandcap">GG-617 well, Dación Field · LASMO (now Eni)</span>
+<button class="handle" type="button" aria-label="Boundary between before and after. Use the left and right arrow keys" style="left: {{posA}}" data-on-keydown="{{keyA}}"></button>
+<button class="cmp-zoom" type="button" aria-label="Expand comparison to full screen" data-on-pointerdown="{{stopCmpDrag}}" data-on-click="{{cmpExpand}}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 1 2 2h3"></path></svg></button>
+</div>
+<div class="cmp" data-on-pointerdown="{{downZ}}" data-on-pointermove="{{move}}" data-on-pointerup="{{up}}" data-on-pointercancel="{{up}}">
+<img src="images/fc6f0b4d3cd6ef37446d6af6718d870a.png" alt="After: detail of the GG-617 well area on day 115, soil recovered with grass and vegetation" width="1508" height="1043">
+<img src="images/d5894194b74e16c7da50e28dbf7b3aba.jpg" alt="Before: detail of the hydrocarbon spill in the GG-617 well area" width="1376" height="768" style="clip-path: {{clipZ}}">
+<div class="seg" style="clip-path: {{segZ1}}"><span class="lab" style="left: 12px">Before · Day 0</span></div>
+<div class="seg" style="clip-path: {{segZ2}}"><span class="lab" style="right: 12px">After · Day 115</span></div>
+<span class="bandcap">GG-617 well · detail of the affected area</span>
+<button class="handle" type="button" aria-label="Boundary between before and after, detail. Use the left and right arrow keys" style="left: {{posZ}}" data-on-keydown="{{keyZ}}"></button>
+<button class="cmp-zoom" type="button" aria-label="Expand comparison to full screen" data-on-pointerdown="{{stopCmpDrag}}" data-on-click="{{cmpExpandZ}}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 1 2 2h3"></path></svg></button>
+</div>
+<div class="wrap"><p class="hint">Drag the line to compare the day of the incident with day 38 of treatment, and in the detail view, with day 115 once recovered.</p></div>
+</div>
+</div>
+
+<sc-if value="{{cmpBig}}" hint-placeholder-val="{{ false }}">
+<div class="lb" role="dialog" aria-modal="true" aria-label="Expanded comparison" data-on-keydown="{{cmpModalKey}}">
+<button class="lb-bg" type="button" aria-label="Close" tabIndex="-1" data-on-click="{{cmpCollapse}}"></button>
+<div class="cmp-lb-inner">
+<div class="cmp" data-on-pointerdown="{{down}}" data-on-pointermove="{{move}}" data-on-pointerup="{{up}}" data-on-pointercancel="{{up}}">
+<img src="images/c14de9a240be36fdd9b1970eb35b8bb2.jpg" alt="After: accelerated in-situ landfarming recovery in the GG-617 well area" width="770" height="720">
+<img src="images/40ccc13ac7a202a5083af97e43dcfe7c.jpg" alt="Before: the GG-617 well area with soil covered in hydrocarbons" width="960" height="720" style="clip-path: {{clipA}}">
+<div class="seg" style="clip-path: {{segA}}"><span class="lab" style="left: 12px">Before · Day 0</span></div>
+<div class="seg" style="clip-path: {{segC}}"><span class="lab" style="right: 12px">After · Day 38</span></div>
+<span class="bandcap">GG-617 well, Dación Field · LASMO (now Eni)</span>
+<button class="handle" type="button" aria-label="Boundary between before and after. Use the left and right arrow keys" style="left: {{posA}}" data-on-keydown="{{keyA}}"></button>
+</div>
+<p class="cmp-lb-hint">Drag the line to compare. By day 115 the area was fully recovered.</p>
+</div>
+<button class="lb-btn lb-close" type="button" aria-label="Close" autoFocus="{{ true }}" data-on-click="{{cmpCollapse}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+</sc-if>
+
+<sc-if value="{{cmpBigZ}}" hint-placeholder-val="{{ false }}">
+<div class="lb" role="dialog" aria-modal="true" aria-label="Expanded comparison, detail" data-on-keydown="{{cmpModalKeyZ}}">
+<button class="lb-bg" type="button" aria-label="Close" tabIndex="-1" data-on-click="{{cmpCollapseZ}}"></button>
+<div class="cmp-lb-inner">
+<div class="cmp" data-on-pointerdown="{{downZ}}" data-on-pointermove="{{move}}" data-on-pointerup="{{up}}" data-on-pointercancel="{{up}}">
+<img src="images/fc6f0b4d3cd6ef37446d6af6718d870a.png" alt="After: detail of the GG-617 well area on day 115, soil recovered with grass and vegetation" width="1508" height="1043">
+<img src="images/d5894194b74e16c7da50e28dbf7b3aba.jpg" alt="Before: detail of the hydrocarbon spill in the GG-617 well area" width="1376" height="768" style="clip-path: {{clipZ}}">
+<div class="seg" style="clip-path: {{segZ1}}"><span class="lab" style="left: 12px">Before · Day 0</span></div>
+<div class="seg" style="clip-path: {{segZ2}}"><span class="lab" style="right: 12px">After · Day 115</span></div>
+<span class="bandcap">GG-617 well · detail of the affected area</span>
+<button class="handle" type="button" aria-label="Boundary between before and after, detail. Use the left and right arrow keys" style="left: {{posZ}}" data-on-keydown="{{keyZ}}"></button>
+</div>
+<p class="cmp-lb-hint">Drag the line to compare the spill with the area already recovered on day 115.</p>
+</div>
+<button class="lb-btn lb-close" type="button" aria-label="Close" autoFocus="{{ true }}" data-on-click="{{cmpCollapseZ}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+</sc-if>
+
+<div class="band" id="areas">
+<div class="wrap">
+<p class="kicker">Areas treated</p>
+<div class="areas">
+<a class="area" href="#obras"><b>+710</b><span>hectares treated</span><em>See clients →</em></a>
+<a class="area" href="#biorremediacion"><b>+700,000</b><span>m³ of bio-treated soil</span><em>See the process →</em></a>
+<a class="area" href="#caso"><b>117 ha</b><span>bio-treated, reforested and revegetated: one of our most notable sites, GG-617 well</span><em>See the case study →</em></a>
+<a class="area" href="#forestal"><b>+241 ha</b><span>reforested</span><em>See forestry management →</em></a>
+<a class="area" href="#cobernet"><b>+415,000 m²</b><span>of Cobernet vegetation cover</span><em>See Cobernet →</em></a>
+</div>
+<p class="meta"><span><strong>+35</strong> years of experience</span><span><strong>+250</strong> projects completed</span><span><strong>6</strong> states: Anzoátegui, Bolívar, Guárico, Miranda, Monagas and Sucre</span></p>
+</div>
+</div>
+
+<section id="empresa">
+<div class="wrap">
+<div class="cols2">
+<div>
+<p class="kicker">Who we are</p>
+<h2>A Venezuelan agro-environmental company</h2>
+<p class="lead">Bio-treatment of hydrocarbon-impacted soils using proprietary technology for environmental recovery, soil stabilization, and the restoration of ecosystems affected by industrial and oil activity.</p>
+<p class="note"><strong>Headquarters:</strong> Barcelona, Anzoátegui state, Venezuela.</p>
+</div>
+<div class="panel">
+<h3>Objectives</h3>
+<ul class="tick">
+<li>Reduce the impact of soil contamination.</li>
+<li>Minimize the use of agrochemicals.</li>
+<li>Support biota in impacted soils.</li>
+<li>Generate environmental, social and economic value.</li>
+</ul>
+</div>
+</div>
+<div class="pillars">
+<div class="pillar"><h3>Constant innovation</h3><p>We seek technological, operational and innovative solutions to environmental problems.</p></div>
+<div class="pillar"><h3>Economic efficiency</h3><p>Technology that minimizes the investment needed to reduce man-made environmental liabilities.</p></div>
+<div class="pillar"><h3>Reliability</h3><p>Proven field results, backed by science and more than three decades of projects.</p></div>
+</div>
+<div class="mv" id="mision-vision">
+<div class="mv-card"><p class="kicker">Mission</p><h3>Repairing environmental damage with our own solutions</h3><p>To provide a specialized agro-environmental service that counteracts the environmental consequences of oil exploitation and remedies the damage immediately, in line with the international treaties Venezuela has signed on ecology and environmentalism.</p></div>
+<div class="mv-card"><p class="kicker">Vision</p><h3>A highly reliable agro-environmental company</h3><p>To be a highly reliable agro-environmental services company, permanently driven to find technological, operational and innovative solutions to environmental problems while taking into account our clients' economic needs.</p></div>
+</div>
+</div>
+</section>
+
+<section class="tint" id="servicios">
+<div class="wrap">
+<div class="head">
+<p class="kicker">Areas of work</p>
+<h2>Our services</h2>
+<p class="lead">Bioremediation is our core work, supported by complementary production and advisory lines.</p>
+</div>
+<div class="svc">
+<a class="main" href="#biorremediacion"><p class="tag">Main service</p><h3>Soil bioremediation</h3><p>Recovery of hydrocarbon-contaminated soils through biological processes.</p></a>
+<a href="#lombricultura"><p class="tag">Production</p><h3>Vermiculture and organic fertilizers</h3><p>Humus and biofertilizers made with California red worms, plus natural fertilizers from organic waste.</p></a>
+<a href="#contacto"><p class="tag">Consulting</p><h3>Environmental advisory</h3><p>Technical guidance on soil care and environmental compliance for projects.</p></a>
+<a href="#cobernet"><p class="tag">Projects</p><h3>Erosion control</h3><p>Slope stabilization and protection with Cobernet.</p></a>
+<a href="#forestal"><p class="tag">Projects</p><h3>Forestry management</h3><p>Reforestation, revegetation and compensation forests.</p></a>
+<a href="#obras"><p class="tag">Projects</p><h3>Pit waterproofing</h3><p>Pit protection to prevent leachate from contaminating materials.</p></a>
+</div>
+</div>
+</section>
+
+<section id="biorremediacion">
+<div class="wrap">
+<div class="cols2">
+<div>
+<p class="kicker">Accelerated in-situ landfarming recovery</p>
+<h2>In-situ bioremediation with proprietary technology</h2>
+<p class="lead">Contaminated soil is recovered on-site through biological processes, until it reaches the levels required by environmental regulations.</p>
+</div>
+<div>
+<ol class="steps">
+<li><strong>Conditioning</strong><span>Collection, homogenization with organic amendments, turning and mechanical aeration.</span></li>
+<li><strong>Moisture control</strong><span>Optimal conditions for the microbiota.</span></li>
+<li><strong>Biostimulation</strong><span>Fulvic solutions and specialized microorganisms.</span></li>
+<li><strong>Accelerated degradation</strong><span>Reduction of SARA to regulatory levels.</span></li>
+</ol>
+</div>
+</div>
+<div class="strip">
+<div class="photo"><img src="images/77f6697fc4de07d090bbde9eae093dce.jpg" alt="Four stages of in-situ landfarming in the field" width="1400" height="343" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: four stages of landfarming" data-on-click="{{openQuadBio}}"></div>
+<ul>
+<li><strong>1 · Collection</strong><span>Collection of hydrocarbons from the flare pit to be mixed and bio-treated.</span></li>
+<li><strong>2 · Homogenization</strong><span>Placement of contaminated soil to be spread out and homogenized.</span></li>
+<li><strong>3 · Turning</strong><span>Mechanical turning and aeration with a grader, spreading the material to be treated.</span></li>
+<li><strong>4 · Sampling</strong><span>Homogenization for composite sample collection.</span></li>
+</ul>
+</div>
+</div>
+</section>
+
+<div class="case" id="caso">
+  <div class="wrap">
+    <div class="casegrid">
+      <div>
+        <p class="kicker">Flagship case · LASMO (now Eni)</p>
+        <h2>117 ha remediated after friction caused by mechanical impact during maintenance of well GG-617</h2>
+        <ul class="casefacts">
+<li><span>Client</span><strong>LASMO Venezuela (now Eni)</strong></li>
+<li><span>Flagship affected area</span><strong>GG-617 · 117 ha bio-treated, reforested and revegetated</strong></li>
+<li><span>Recovery time</span><strong>115 days to full recovery</strong></li>
+<li><span>Work performed</span><strong>Multiple areas bio-treated in the Dación Field from 1999 to 2004</strong></li>
+</ul>
+        <div class="actions"><a class="btn light" href="#comparar">See before and after</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="cobernet">
+<div class="wrap">
+<div class="head">
+<p class="kicker">Cobernet</p>
+<h2>Artisanal and sustainable erosion control</h2>
+<p class="lead">A product made by Agroforestal San Remo in collaboration with the Kariña people, to stabilize slopes and embankments and promote revegetation.</p>
+</div>
+<div class="cols2">
+<div>
+<div class="parts">
+<div><strong>Mesh</strong><span>Photodegradable polyethylene</span></div>
+<div><strong>Hay</strong><span>Treated with fulvic acids</span></div>
+<div><strong>Thread</strong><span>Biodegradable</span></div>
+</div>
+<ul class="tick">
+<li>Protects the slope from the very first rainfall.</li>
+<li>Dissipates rainfall energy.</li>
+<li>Minimizes gully formation.</li>
+<li>Promotes grass germination.</li>
+<li>Local labor and bio- and photodegradable materials.</li>
+</ul>
+<p class="note wide"><strong>Applied in:</strong> Anzoátegui, Bolívar, Miranda, Monagas and Sucre.</p>
+</div>
+<div class="photorow">
+<div><div class="photo"><img src="images/392ebabefee208da7467ba3b79f75884.png" alt="Roll of Cobernet ready to install" width="1537" height="1023" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: roll of Cobernet" data-on-click="{{openCobernetRollo}}"></div><p class="note">Roll of Cobernet before installation</p></div>
+<div><div class="photo"><img src="images/0a2d41abcc1f92565b20916872ff5e4e.jpg" alt="Cobernet installation on a roadside slope: rolls on site, mesh deployment, stake fixing and covered slope" width="1292" height="676" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: Cobernet installation" data-on-click="{{openCobernetFoto}}"></div><p class="note">Installed on a slope</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="tint" id="lombricultura">
+<div class="wrap">
+<div class="split rev">
+<div>
+<p class="kicker">Vermiculture</p>
+<h2>Organic matter turned into fertility</h2>
+<p class="wide">The humus produced by Agroforestal San Remo C.A. accelerates the degradation of hydrocarbons.</p>
+</div>
+<div class="photo"><img src="images/fb5e01c6b206f2eecd3d393c1f07d49d.jpg" alt="Hand holding humus with California red worms" width="680" height="555" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: humus with worms" data-on-click="{{openLombricMano}}"></div>
+</div>
+<div class="pcaps">
+<div><div class="photo"><img src="images/22f5884fd42346258d0a2acd2e9d848d.png" alt="Finished solid vermicompost humus" width="652" height="476" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: finished solid humus" data-on-click="{{openHumusSolido}}"></div><p class="note">Finished solid humus</p></div>
+<div><div class="photo"><img src="images/f9fa743a97844d5617aecd6c0586c0b9.png" alt="Bags of solid humus ready for dispatch" width="361" height="326" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: bagged solid humus" data-on-click="{{openHumusSacos}}"></div><p class="note">Bagged solid humus</p></div>
+<div><div class="photo"><img src="images/c530b1f13af8f6317bc3b96844dedc8e.png" alt="Extraction of liquid vermicompost humus" width="361" height="326" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: liquid humus" data-on-click="{{openHumusLiquido}}"></div><p class="note">Liquid humus</p></div>
+</div>
+</div>
+</section>
+
+
+
+<section id="forestal">
+<div class="wrap">
+<div class="split">
+<div class="photo"><img src="images/8849a11ed509f7ee64ed7273a916c0a0.jpg" alt="Young plantation of forest and fruit species in a compensation forest" width="610" height="653" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: young plantation" data-on-click="{{openForestalJoven}}"></div>
+<div>
+<p class="kicker">Forestry management</p>
+<h2>Compensation forests and reforestation</h2>
+<p>Planting and maintenance of forest and fruit species, and establishment of compensation forests. More than 241 ha reforested. Model farms: Varón (26 ha), Villa Alegría (33 ha), among others, a notable reference at the state level.</p>
+<p class="note"><strong>Maintenance:</strong> organic and chemical fertilization, pH control, pest control, weeding and firebreaks.</p>
+<div class="photo wide"><img src="images/5fa5cf66e1defabe338478ef81c0ec41.jpg" alt="Developing plantation and seedling with individual irrigation" width="1296" height="300" style="cursor: zoom-in" tabIndex="0" role="button" aria-label="Enlarge photo: developing plantation" data-on-click="{{openForestalDuo}}"></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="tint" id="obras">
+<div class="wrap">
+<div class="head">
+<p class="kicker">Experience</p>
+<h2>Companies that have trusted us</h2>
+<p class="lead">Companies we have worked with.</p>
+</div>
+<div class="mqwrap" aria-label="Clients. Drag to scroll manually; tap outside to resume." tabindex="0" data-on-pointerdown="{{mqDown}}" data-on-pointermove="{{mqMove}}" data-on-pointerup="{{mqUp}}" data-on-pointercancel="{{mqUp}}">
+<div class="mqtrack">
+<div class="mqcard">Lagoven (now PDVSA)</div>
+<div class="mqcard">Benton Vinccler (now Petrodelta)</div>
+<div class="mqcard">Teikoku Oil</div>
+<div class="mqcard">Norcen · Pérez Companc</div>
+<div class="mqcard">Astra Producción Petrolera</div>
+<div class="mqcard">FY Construcciones</div>
+<div class="mqcard">Servicios La Veglia</div>
+<div class="mqcard">Corpoven (now PDVSA)</div>
+<div class="mqcard">Foster Wheeler Caribe</div>
+<div class="mqcard">PARECA</div>
+<div class="mqcard">Petrozuata (PDVSA)</div>
+<div class="mqcard">Agroforestal Anzoátegui</div>
+<div class="mqcard">Arbórea</div>
+<div class="mqcard">LASMO Venezuela (now Eni)</div>
+<div class="mqcard">Tuboscope Brandt</div>
+<div class="mqcard">Petroterminal JOSE</div>
+<div class="mqcard">Inversiones Velásquez</div>
+<div class="mqcard">PEDECA ORIENTE</div>
+<div class="mqcard">Evergreen Service</div>
+<div class="mqcard">Servicios Quijada</div>
+<div class="mqcard">Asociación Regional de Ganaderos del Edo. Anzoátegui</div>
+<div class="mqcard">Servimeca Sand Control</div>
+<div class="mqcard">Petrocedeño</div>
+<div class="mqcard" aria-hidden="true">Lagoven (now PDVSA)</div>
+<div class="mqcard" aria-hidden="true">Benton Vinccler (now Petrodelta)</div>
+<div class="mqcard" aria-hidden="true">Teikoku Oil</div>
+<div class="mqcard" aria-hidden="true">Norcen · Pérez Companc</div>
+<div class="mqcard" aria-hidden="true">Astra Producción Petrolera</div>
+<div class="mqcard" aria-hidden="true">FY Construcciones</div>
+<div class="mqcard" aria-hidden="true">Servicios La Veglia</div>
+<div class="mqcard" aria-hidden="true">Corpoven (now PDVSA)</div>
+<div class="mqcard" aria-hidden="true">Foster Wheeler Caribe</div>
+<div class="mqcard" aria-hidden="true">PARECA</div>
+<div class="mqcard" aria-hidden="true">Petrozuata (PDVSA)</div>
+<div class="mqcard" aria-hidden="true">Agroforestal Anzoátegui</div>
+<div class="mqcard" aria-hidden="true">Arbórea</div>
+<div class="mqcard" aria-hidden="true">LASMO Venezuela (now Eni)</div>
+<div class="mqcard" aria-hidden="true">Tuboscope Brandt</div>
+<div class="mqcard" aria-hidden="true">Petroterminal JOSE</div>
+<div class="mqcard" aria-hidden="true">Inversiones Velásquez</div>
+<div class="mqcard" aria-hidden="true">PEDECA ORIENTE</div>
+<div class="mqcard" aria-hidden="true">Evergreen Service</div>
+<div class="mqcard" aria-hidden="true">Servicios Quijada</div>
+<div class="mqcard" aria-hidden="true">Asociación Regional de Ganaderos del Edo. Anzoátegui</div>
+<div class="mqcard" aria-hidden="true">Servimeca Sand Control</div>
+<div class="mqcard" aria-hidden="true">Petrocedeño</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="tint" id="galeria">
+<div class="wrap">
+<p class="kicker">Photo gallery</p>
+<h2>Our work in the field</h2>
+<p class="lead">Images of completed projects, in the same order as our services. Tap a photo to enlarge it; the strip pauses for a few seconds when touched and then continues.</p>
+<sc-for list="{{gal}}" as="g" hint-placeholder-count="5">
+<div class="ggroup">
+<h3>{{g.title}}</h3>
+<sc-if value="{{g.single}}" hint-placeholder-val="{{ false }}">
+<div class="gsolo">
+<sc-for list="{{g.items}}" as="it" hint-placeholder-count="1">
+<button class="gitem" type="button" data-on-click="{{it.open}}" aria-label="Enlarge photo: {{it.cap}}"><img src="{{it.src}}" alt="{{it.cap}}" loading="lazy"><span>{{it.cap}}</span></button>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{g.multi}}" hint-placeholder-val="{{ true }}">
+<div class="gwrap" aria-label="{{g.title}} — photos, continuous scroll" tabindex="0">
+<div class="gtrack">
+<sc-for list="{{g.items}}" as="it" hint-placeholder-count="4">
+<button class="gitem" type="button" data-on-click="{{it.open}}" aria-label="Enlarge photo: {{it.cap}}"><img src="{{it.src}}" alt="{{it.cap}}" loading="lazy"><span>{{it.cap}}</span></button>
+</sc-for>
+<sc-for list="{{g.items}}" as="it" hint-placeholder-count="4">
+<button class="gitem" type="button" tabIndex="-1" aria-hidden="true" data-on-click="{{it.open}}"><img src="{{it.src}}" alt="" loading="lazy"><span>{{it.cap}}</span></button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{lbOpen}}" hint-placeholder-val="{{ false }}">
+<div class="lb" role="dialog" aria-modal="true" aria-label="Enlarged photo" data-on-keydown="{{lbKey}}">
+<button class="lb-bg" type="button" aria-label="Close" tabIndex="-1" data-on-click="{{lbClose}}"></button>
+<figure class="lb-fig"><img src="{{lb.src}}" alt="{{lb.cap}}"><figcaption><strong>{{lb.cap}}</strong><span>{{lb.group}} · {{lb.pos}}</span></figcaption></figure>
+<button class="lb-btn lb-prev" type="button" aria-label="Previous photo" data-on-click="{{lbPrev}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+<button class="lb-btn lb-next" type="button" aria-label="Next photo" data-on-click="{{lbNext}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
+<button class="lb-btn lb-close" type="button" aria-label="Close" autoFocus="{{ true }}" data-on-click="{{lbClose}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+</sc-if>
+</section>
+
+<section id="respaldo">
+<div class="wrap quote">
+<p class="kicker">Scientific backing</p>
+<h2>Validated by scientific research</h2>
+<p class="lead">The Marine Communities Laboratory of Universidad Simón Bolívar (today CETOXMAR USB) carried out laboratory research, commissioned by Agroforestal San Remo, to explain the physical, chemical and biological foundations of its landfarming methodology for the bio-treatment of hydrocarbon-contaminated soils. In its letter, the laboratory states that the company has been a world pioneer since 1996 in the use of combinations of fulvic and humic substances, produced through vermicompost, for the landfarming bio-treatment of contaminated soils.</p>
+<p>It is an artisanal, local method, designed by the company's founder, a Venezuelan environmentalist from the region.</p>
+<div class="actions"><a class="btn line" href="CartaUSB.dc.html">See the letter from Universidad Simón Bolívar</a></div>
+</div>
+</section>
+
+<section class="tint" id="equipo">
+<div class="wrap">
+<p class="kicker">Our team</p>
+<h2>Technical and managerial experience</h2>
+<div class="team">
+<div class="person"><img src="images/fc6a24a95a69dfa5af9f57289f04f6d6.jpg" alt="Esperanza Rodríguez" width="360" height="361"><strong>Esperanza Rodríguez</strong><span>Administrator</span></div>
+<div class="person"><img src="images/61582cf04772d7131c422ddc87289f36.jpg" alt="Dora F. Mafoda G." width="360" height="447"><strong>Dora F. Mafoda G.</strong><span>HR Manager</span></div>
+<div class="person"><img src="images/e1764fe15cf959012774afe6a899ccce.jpg" alt="Wilfrido Trías" width="360" height="365"><strong>Wilfrido Trías</strong><span>Business advisor</span></div>
+<div class="person"><img src="images/bf55760af279afd7770e7ea1e123554d.jpg" alt="Publio R. Buitrago" width="359" height="479"><strong>Publio R. Buitrago</strong><span>Field engineer</span></div>
+<div class="person"><img src="images/4e7d785f0fb6b925bb0ce420c3499058.jpg" alt="Sebastián García Sosa" width="359" height="431"><strong>Sebastián García Sosa</strong><span>Field engineer</span></div>
+</div>
+
+<div class="founder">
+<img src="images/e4822033903698c6323e4b5847436972.jpg" alt="Isaac Mafoda, president and founder" width="720" height="900">
+<div>
+<p class="kicker">Our founder</p>
+<h2>Isaac Mafoda, president and founder</h2>
+<p>Venezuelan-Spanish businessman with more than 35 years of experience in environmental and agricultural solutions. Agronomy degree, Animal Science major, Hebrew University of Jerusalem (Rehovot, 1978–1981).</p>
+<ul class="timeline">
+<li><b>1981 – present</b><span>Management and advisory for agricultural and livestock projects.</span></li>
+<li><b>1990</b><span>Founds Agroforestal San Remo, C.A.</span></li>
+<li><b>1997–2012</b><span>Carries out bioremediation projects: more than 700,000 m³ recovered in situ.</span></li>
+<li><b>2012 – present</b><span>Isaac continues advising farms and agricultural and livestock projects.</span></li>
+<li><b>1997</b><span>Zeraim Gedera agreement: hybrid seeds for export to Israel.</span></li>
+<li><b>1997 – 2018</b><span>CEVI: agricultural director for the Eastern Chapter, vice-president and president.</span></li>
+<li><b>2022 – present</b><span>Founds Orgánika Venezolana de Lombricultura, C.A.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="datos">
+<div class="wrap">
+<div class="cols2">
+<div>
+<p class="kicker">Company information</p>
+<h2>A registered, up-to-date company</h2>
+<p class="lead">Tax information from the Tax Information Registry (RIF) issued by SENIAT, updated on 10/14/2026.</p>
+</div>
+<dl class="facts">
+<div class="row"><dt>Legal name</dt><dd>Agroforestal San Remo C.A.</dd></div>
+<div class="row"><dt>RIF</dt><dd>J-08029890-0</dd></div>
+<div class="row"><dt>Registration date</dt><dd>02/03/1995</dd></div>
+<div class="row"><dt>Registered address</dt><dd>Av. Raúl Leoni, house s/n, Guamachito sector, Barcelona, Anzoátegui state. Postal code 6032</dd></div>
+</dl>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contacto">
+<div class="wrap">
+<p class="kicker">Contact</p>
+<h2>Let's talk about your project</h2>
+<p class="lead">Tell us about the soil or project you need help with and we'll get back to you shortly.</p>
+<div class="contactgrid">
+<div class="quotebox">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form class="qform" data-on-submit="{{submit}}">
+<h3>Request a quote</h3>
+<p class="formnote">Fields marked with * are required.</p>
+<div class="frow">
+<div class="field"><label for="q-nombre">First and last name *</label><input id="q-nombre" name="nombre" type="text" autocomplete="name" required="required"></div>
+<div class="field"><label for="q-empresa">Company *</label><input id="q-empresa" name="empresa" type="text" autocomplete="organization" required="required"></div>
+</div>
+<div class="frow">
+<div class="field"><label for="q-correo">Email *</label><input id="q-correo" name="correo" type="email" autocomplete="email" required="required"></div>
+<div class="field"><label for="q-tel">Phone or WhatsApp</label><input id="q-tel" name="telefono" type="tel" autocomplete="tel"></div>
+</div>
+<div class="frow">
+<div class="field"><label for="q-servicio">Service *</label>
+<select id="q-servicio" name="servicio" required="required">
+<option value="">Select a service</option>
+<option value="Soil bioremediation">Soil bioremediation</option>
+<option value="Erosion control (Cobernet)">Erosion control (Cobernet)</option>
+<option value="Forestry management">Forestry management</option>
+<option value="Pit waterproofing">Pit waterproofing</option><option value="Vermiculture and organic fertilizers">Vermiculture and organic fertilizers</option>
+<option value="Environmental advisory">Environmental advisory</option>
+<option value="Other">Other</option>
+</select></div>
+<div class="field"><label for="q-ubic">Project location</label><input id="q-ubic" name="ubicacion" type="text" placeholder="State, field or municipality"></div>
+</div>
+<div class="field"><label for="q-mag">Estimated area or volume</label><input id="q-mag" name="magnitud" type="text" placeholder="Example: 5 ha or 2,000 m³"></div>
+<div class="field"><label for="q-msg">Describe your project *</label><textarea id="q-msg" name="mensaje" rows="5" required="required" placeholder="For bio-treatments, specify the % TPH"></textarea></div>
+<button class="btn solid send" type="submit">Send request</button>
+<p class="formnote">By submitting, you agree to the use of your data according to our <a href="Legal.dc.html">privacy notice</a>.</p>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div class="thanks" role="status">
+<h3>Thank you, we received your request</h3>
+<p>We'll get back to you shortly at the email you provided.</p>
+<button class="btn line" type="button" data-on-click="{{again}}">Send another request</button>
+</div>
+</sc-if>
+</div>
+<div class="reach">
+<div class="item">
+<small>Main email</small>
+<a class="big" href="mailto:imafodag@gmail.com">imafodag@gmail.com</a>
+<button class="copy" type="button" data-on-click="{{copy1}}">{{copy1Label}}</button>
+</div>
+<div class="item">
+<small>Company email</small>
+<a class="big sec" href="mailto:agroforestalsanremoca@gmail.com">agroforestalsanremoca@gmail.com</a>
+<button class="copy" type="button" data-on-click="{{copy2}}">{{copy2Label}}</button>
+</div>
+<div class="item">
+<small>WhatsApp</small>
+<a class="big" href="https://wa.me/584129871154" target="_blank" rel="noopener">+58 412 987 1154</a>
+</div>
+<div class="item">
+<small>Headquarters</small>
+<span class="big">Barcelona, Anzoátegui state, Venezuela</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<span>© 2026 Agroforestal San Remo C.A.</span>
+<span>RIF J-08029890-0 · <a href="Legal.dc.html">Legal notice and privacy</a></span>
+</div>
+</footer>
+<a class="wa" href="https://wa.me/584129871154" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.2A8.4 8.4 0 1 1 21 11.5z"></path><path d="M9 9.5c.3 1.8 1.8 3.6 3.7 4.4l1.2-1.1 2 .9-.4 1.6c-3.5.2-7.1-3.3-7-6.9l1.6-.4.9 2z"></path></svg><span>WhatsApp</span></a>
+</div>
+</template><div id="root"></div>
+<script>window.__missing=[];window.__badHandlers=[];
+class DCLogic { constructor(p){ this.props=p||{}; this.state={}; } setState(o){ Object.assign(this.state,o); window.__rerender(); } }
+function look(scope, expr){
+  expr = expr.trim();
+  if (expr === 'true') return true; if (expr === 'false') return false;
+  var parts = expr.split('.'), v;
+  for (var i = scope.length - 1; i >= 0; i--) { if (parts[0] in scope[i]) { v = scope[i][parts[0]]; break; } }
+  if (v === undefined) { window.__missing.push(expr); return ''; }
+  for (var j = 1; j < parts.length; j++) v = v == null ? '' : v[parts[j]];
+  return v;
+}
+function interp(str, scope){
+  var m = str.match(/^\s*\{\{([^}]+)\}\}\s*$/);
+  if (m) return look(scope, m[1]);
+  return str.replace(/\{\{([^}]+)\}\}/g, function(_, e){ var v = look(scope, e); return v == null ? '' : String(v); });
+}
+function build(node, scope, out){
+  if (node.nodeType === 3) { out.appendChild(document.createTextNode(interp(node.textContent, scope))); return; }
+  if (node.nodeType !== 1) return;
+  var tag = node.tagName.toLowerCase();
+  if (tag === 'sc-if') { if (interp(node.getAttribute('value'), scope)) node.childNodes.forEach(function(c){ build(c, scope, out); }); return; }
+  if (tag === 'sc-for') {
+    var list = interp(node.getAttribute('list'), scope) || [], as = node.getAttribute('as');
+    list.forEach(function(item){ var o = {}; o[as] = item; node.childNodes.forEach(function(c){ build(c, scope.concat([o]), out); }); });
+    return;
+  }
+  var el = (node.namespaceURI === 'http://www.w3.org/2000/svg') ? document.createElementNS(node.namespaceURI, node.tagName) : document.createElement(tag);
+  for (var a of Array.from(node.attributes)) {
+    if (/^on[A-Z]/.test(a.name) || /^on[a-z]/.test(a.name) && a.value.indexOf('{{') >= 0) {
+      var fn = interp(a.value, scope);
+      if (typeof fn === 'function') el.addEventListener(a.name.slice(2).toLowerCase(), fn);
+      else window.__badHandlers.push(a.name + '=' + a.value);
+      continue;
+    }
+    if (a.name.indexOf('hint-') === 0) continue;
+    el.setAttribute(a.name, interp(a.value, scope));
+  }
+  var src = node.tagName.toLowerCase() === 'template' ? node.content : node;
+  src.childNodes.forEach(function(c){ build(c, scope, el); });
+  out.appendChild(el);
+}
+
+var Component = (new Function("\nvar GAL = [{\"title\": \"Bioremediation \u00b7 Landfarming\", \"items\": [{\"src\": \"images/ce7d5932fe85dd408a6b5fc498aaa7c5.jpg\", \"cap\": \"Accelerated in-situ landfarming recovery\"}, {\"src\": \"images/d40106cfed43edc05f0897d05b53e057.jpg\", \"cap\": \"Collection of hydrocarbons from the flare pit\"}, {\"src\": \"images/13d4b280314c4f71e235655304a113d9.jpg\", \"cap\": \"Material in in-situ landfarming\"}, {\"src\": \"images/5d7de52f9059b8e3e1b1274c9097a674.jpg\", \"cap\": \"Homogenization with organic amendments\"}, {\"src\": \"images/2c6d893f66ece01eaf70a2d2c0f50405.jpg\", \"cap\": \"Mechanical turning and aeration\"}, {\"src\": \"images/77f6697fc4de07d090bbde9eae093dce.jpg\", \"cap\": \"Four stages of in-situ landfarming in the field\"}]}, {\"title\": \"Cobernet \u00b7 Erosion control\", \"items\": [{\"src\": \"images/392ebabefee208da7467ba3b79f75884.png\", \"cap\": \"Roll of Cobernet before installation\"}, {\"src\": \"images/48a316da5772ea5cd385f3a27d5ea901.jpg\", \"cap\": \"Material deployment\"}, {\"src\": \"images/d6e60e5b36ce05aa23a60058ddb80b01.jpg\", \"cap\": \"Manual installation\"}, {\"src\": \"images/e6ac3536c00af15d0ee0d9265d1c273b.jpg\", \"cap\": \"Product close-up\"}, {\"src\": \"images/12ca8c680630352a30d0563999fee432.jpg\", \"cap\": \"Mesh fixing\"}, {\"src\": \"images/b1ddfe325b1a03530cefeeb1bb4dda36.jpg\", \"cap\": \"Cover installed\"}, {\"src\": \"images/ca9f1cd5724dcdcc67120508fad6cd81.jpg\", \"cap\": \"Stabilized slope\"}, {\"src\": \"images/0a2d41abcc1f92565b20916872ff5e4e.jpg\", \"cap\": \"Cobernet installation on a roadside slope\"}]}, {\"title\": \"Vermiculture\", \"items\": [{\"src\": \"images/fb5e01c6b206f2eecd3d393c1f07d49d.jpg\", \"cap\": \"Humus with California red worms\"}, {\"src\": \"images/22f5884fd42346258d0a2acd2e9d848d.png\", \"cap\": \"Finished solid humus\"}, {\"src\": \"images/f9fa743a97844d5617aecd6c0586c0b9.png\", \"cap\": \"Bagged solid humus\"}, {\"src\": \"images/c530b1f13af8f6317bc3b96844dedc8e.png\", \"cap\": \"Liquid humus\"}]}, {\"title\": \"Forestry management\", \"items\": [{\"src\": \"images/8849a11ed509f7ee64ed7273a916c0a0.jpg\", \"cap\": \"Compensation forest, Daci\u00f3n Block\"}, {\"src\": \"images/74e7d5cd4a12f75a3febe3de45622639.jpg\", \"cap\": \"Developing plantation\"}, {\"src\": \"images/e1e925802aa97a88fc22dad72ec90e1e.jpg\", \"cap\": \"Seedling with individual irrigation\"}, {\"src\": \"images/5fa5cf66e1defabe338478ef81c0ec41.jpg\", \"cap\": \"Developing plantation and seedling with individual irrigation\"}]}, {\"title\": \"Flagship case \u00b7 Daci\u00f3n Field\", \"items\": [{\"src\": \"images/40ccc13ac7a202a5083af97e43dcfe7c.jpg\", \"cap\": \"Day 0 \u00b7 Area affected by saltwater and hydrocarbons, GG-617 well\"}, {\"src\": \"images/c14de9a240be36fdd9b1970eb35b8bb2.jpg\", \"cap\": \"Day 38 \u00b7 Areas in recovery\"}, {\"src\": \"images/f050b966e88d771df2278de682e65ad4.jpg\", \"cap\": \"Day 115 \u00b7 Fully recovered, GG-617 well\"}]}];\nvar WA_NUM = '584129871154';\nvar CORREO = 'agroforestalsanremoca@gmail.com';\nfunction waLink(t) { return 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(t); }\nfunction waTpl(p) { return 'Hello, I\\'m interested in ' + p + '. I\\'m ___ from ___ and I need ___.'; }\nfunction readForm(form) {\n  var fd = new FormData(form), o = {};\n  ['nombre', 'empresa', 'telefono', 'cantidad', 'estado'].forEach(function (k) { o[k] = String(fd.get(k) || '').trim(); });\n  return o;\n}\nfunction waFilled(p, d) {\n  return 'Hello, I\\'m interested in ' + p + '. I\\'m ' + d.nombre + ' from ' + d.empresa + ' and I need ' + d.cantidad + '. State: ' + d.estado + '. Phone: ' + d.telefono + '.';\n}\nfunction mailFilled(p, d) {\n  var body = 'Product: ' + p + '\\nName: ' + d.nombre + '\\nCompany: ' + d.empresa + '\\nPhone: ' + d.telefono + '\\nApproximate quantity: ' + d.cantidad + '\\nState: ' + d.estado;\n  return 'mailto:' + CORREO + '?subject=' + encodeURIComponent('Information request \u00b7 ' + p) + '&body=' + encodeURIComponent(body);\n}\nvar PNAME = { A: 'ABONON', O: 'ORGANIK ON', B: 'ABONON y ORGANIK ON' };\nvar FLAT = [];\nGAL.forEach(function (g) { g.items.forEach(function (it) { FLAT.push({ src: it.src, cap: it.cap, group: g.title }); }); });\nfunction openBySrc(self, src) { return function () { var idx = FLAT.findIndex(function (f) { return f.src === src; }); if (idx >= 0) self.setState({ lb: idx }); }; }\nvar GAP = 6;\nclass Component extends DCLogic {\n  constructor(props) {\n    super(props);\n    this.state = { a: 50, b: 100, z: 50, copied: '', sent: false, lb: -1, prod: 'A', psent: false, pd: null, cmpBig: false, cmpBigZ: false };\n    this.drag = null;\n  }\n  setPos(k, v) {\n    var s = this.state;\n    if (k === 'a') v = Math.max(0, Math.min(v, 100));\n    else if (k === 'z') v = Math.max(0, Math.min(v, 100));\n    else v = Math.min(100, Math.max(v, s.a + GAP));\n    var o = {}; o[k] = v; this.setState(o);\n  }\n  pct(e) {\n    var r = e.currentTarget.getBoundingClientRect();\n    return (e.clientX - r.left) / r.width * 100;\n  }\n  doCopy(addr, key) {\n    var self = this;\n    var done = function (ok) {\n      self.setState({ copied: ok ? key : key + '-x' });\n      clearTimeout(self.t);\n      self.t = setTimeout(function () { self.setState({ copied: '' }); }, 2000);\n    };\n    try { navigator.clipboard.writeText(addr).then(function () { done(true); }, function () { done(false); }); }\n    catch (err) { done(false); }\n  }\n  componentDidMount() {\n    var self = this;\n    this.galPauseHandler = function (e) {\n      var wrap = e.target.closest && e.target.closest('.sr .gwrap');\n      if (!wrap) return;\n      wrap.classList.add('tap-paused');\n      clearTimeout(wrap._resumeTimer);\n      wrap._resumeTimer = setTimeout(function () { wrap.classList.remove('tap-paused'); }, 2500);\n    };\n    document.addEventListener('pointerdown', this.galPauseHandler);\n    this.mqOutsideHandler = function (e) {\n      if (!self.mqPausedManual) return;\n      var inside = e.target.closest && e.target.closest('.sr .mqwrap');\n      if (inside) return;\n      var track = document.querySelector('.sr .mqtrack');\n      if (track) {\n        var w = self.mqTrackW || (track.scrollWidth / 2) || 1;\n        var dur = parseFloat(window.getComputedStyle(track).animationDuration) || 95;\n        var offset = self.mqOffset || 0;\n        var fraction = w ? (-offset / w) : 0;\n        fraction = ((fraction % 1) + 1) % 1;\n        track.style.animation = '';\n        track.style.transform = '';\n        track.style.animationDelay = (-(fraction * dur)) + 's';\n        track.closest('.mqwrap').classList.remove('mq-dragging');\n      }\n      self.mqPausedManual = false;\n      self.mqDragging = false;\n    };\n    document.addEventListener('pointerdown', this.mqOutsideHandler);\n    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;\n    this.galTimer = setInterval(function () {\n      document.querySelectorAll('.sr .gwrap').forEach(function (wrap) {\n        var wr = wrap.getBoundingClientRect();\n        var cx = wr.left + wr.width / 2;\n        wrap.querySelectorAll('.gitem').forEach(function (btn) {\n          var baseW = btn.offsetWidth;\n          var r = btn.getBoundingClientRect();\n          var icx = r.left + r.width / 2;\n          var reach = wr.width / 2 + baseW / 2 || 1;\n          var norm = Math.min(1, Math.abs(icx - cx) / reach);\n          var scale = 1.3 - 0.45 * norm;\n          var extra = Math.max(0, (scale - 1) * baseW / 2);\n          btn.style.transform = 'scale(' + scale.toFixed(3) + ')';\n          btn.style.opacity = (1 - 0.3 * norm).toFixed(3);\n          btn.style.zIndex = String(Math.round((1 - norm) * 10));\n          btn.style.marginLeft = extra.toFixed(1) + 'px';\n          btn.style.marginRight = extra.toFixed(1) + 'px';\n        });\n      });\n    }, 80);\n  }\n  componentWillUnmount() { clearTimeout(this.t); if (this.galTimer) clearInterval(this.galTimer); if (this.galPauseHandler) document.removeEventListener('pointerdown', this.galPauseHandler); if (this.mqOutsideHandler) document.removeEventListener('pointerdown', this.mqOutsideHandler); }\n  renderVals() {\n    var self = this, s = this.state;\n    var label = function (key) { return s.copied === key ? 'Copied' : s.copied === key + '-x' ? 'Select and copy' : 'Copy'; };\n    var key = function (k) {\n      return function (e) {\n        var d = e.key === 'ArrowLeft' ? -2 : e.key === 'ArrowRight' ? 2 : 0;\n        if (d) { e.preventDefault(); self.setPos(k, self.state[k] + d); }\n      };\n    };\n    return {\n      clipA: 'inset(0 ' + (100 - s.a) + '% 0 0)',\n      clipB: 'inset(0 ' + (100 - s.b) + '% 0 0)',\n      posA: s.a + '%',\n      posB: s.b + '%',\n      segA: 'inset(0 ' + (100 - s.a) + '% 0 0)',\n      segB: 'inset(0 ' + (100 - s.b) + '% 0 ' + s.a + '%)',\n      segC: 'inset(0 0 0 ' + s.a + '%)',\n      labB: 'calc(' + s.a + '% + 12px)',\n      keyA: key('a'),\n      keyB: key('b'),\n      clipZ: 'inset(0 ' + (100 - s.z) + '% 0 0)',\n      posZ: s.z + '%',\n      segZ1: 'inset(0 ' + (100 - s.z) + '% 0 0)',\n      segZ2: 'inset(0 0 0 ' + s.z + '%)',\n      keyZ: key('z'),\n      down: function (e) {\n        var p = self.pct(e), a = self.state.a, b = self.state.b;\n        var k = 'a';\n\n        self.drag = k;\n        try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}\n        self.setPos(k, p);\n        e.preventDefault();\n      },\n      downZ: function (e) {\n        var p = self.pct(e);\n        self.drag = 'z';\n        try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}\n        self.setPos('z', p);\n        e.preventDefault();\n      },\n      move: function (e) { if (self.drag) self.setPos(self.drag, self.pct(e)); },\n      up: function () { self.drag = null; },\n      mqDown: function (e) {\n        var wrap = e.currentTarget;\n        var track = wrap.querySelector('.mqtrack');\n        if (!track) return;\n        var w = track.scrollWidth / 2 || 1;\n        var cur = 0;\n        if (self.mqPausedManual && typeof self.mqOffset === 'number') {\n          cur = self.mqOffset;\n        } else {\n          var cs = window.getComputedStyle(track);\n          var m = cs.transform;\n          if (m && m !== 'none') {\n            var mm = m.match(/matrix\\(([^)]+)\\)/);\n            if (mm) { var parts = mm[1].split(','); cur = parseFloat(parts[4]) || 0; }\n          }\n        }\n        track.style.animation = 'none';\n        track.style.transform = 'translateX(' + cur + 'px)';\n        wrap.classList.add('mq-dragging');\n        self.mqOffset = cur;\n        self.mqTrackW = w;\n        self.mqDragStartX = e.clientX;\n        self.mqDragStartOffset = cur;\n        self.mqDragging = true;\n        self.mqPausedManual = true;\n        try { wrap.setPointerCapture(e.pointerId); } catch (err) {}\n        e.preventDefault();\n      },\n      mqMove: function (e) {\n        if (!self.mqDragging) return;\n        var wrap = e.currentTarget;\n        var track = wrap.querySelector('.mqtrack');\n        if (!track) return;\n        var delta = e.clientX - self.mqDragStartX;\n        var raw = self.mqDragStartOffset + delta;\n        var w = self.mqTrackW || 1;\n        var wrapped = raw % w;\n        if (wrapped > 0) wrapped -= w;\n        self.mqOffset = wrapped;\n        track.style.transform = 'translateX(' + wrapped + 'px)';\n      },\n      mqUp: function (e) {\n        self.mqDragging = false;\n        if (e && e.currentTarget && e.currentTarget.classList) e.currentTarget.classList.remove('mq-dragging');\n      },\n      cmpBig: s.cmpBig,\n      cmpExpand: function (e) { if (e && e.stopPropagation) e.stopPropagation(); self.setState({ cmpBig: true }); },\n      cmpCollapse: function () { self.setState({ cmpBig: false }); },\n      cmpBigZ: s.cmpBigZ,\n      cmpExpandZ: function (e) { if (e && e.stopPropagation) e.stopPropagation(); self.setState({ cmpBigZ: true }); },\n      cmpCollapseZ: function () { self.setState({ cmpBigZ: false }); },\n      cmpModalKeyZ: function (e) { if (e.key === 'Escape') { e.preventDefault(); self.setState({ cmpBigZ: false }); } },\n      stopCmpDrag: function (e) { e.stopPropagation(); },\n      cmpModalKey: function (e) { if (e.key === 'Escape') { e.preventDefault(); self.setState({ cmpBig: false }); } },\n      copy1: function () { self.doCopy('imafodag@gmail.com', 'm1'); },\n      copy2: function () { self.doCopy('agroforestalsanremoca@gmail.com', 'm2'); },\n      gal: GAL.map(function (g) { return { title: g.title, single: g.items.length === 1, multi: g.items.length > 1, items: g.items.map(function (it) { var idx = FLAT.findIndex(function (f) { return f.src === it.src && f.cap === it.cap; }); return { src: it.src, cap: it.cap, open: function () { self.setState({ lb: idx }); } }; }) }; }),\n      openDia0: openBySrc(self, 'images/40ccc13ac7a202a5083af97e43dcfe7c.jpg'),\n      openDia38: openBySrc(self, 'images/c14de9a240be36fdd9b1970eb35b8bb2.jpg'),\n      openQuadBio: openBySrc(self, 'images/77f6697fc4de07d090bbde9eae093dce.jpg'),\n      openCobernetFoto: openBySrc(self, 'images/0a2d41abcc1f92565b20916872ff5e4e.jpg'),\n      openCobernetRollo: openBySrc(self, 'images/392ebabefee208da7467ba3b79f75884.png'),\n      openLombricMano: openBySrc(self, 'images/fb5e01c6b206f2eecd3d393c1f07d49d.jpg'),\n      openHumusSolido: openBySrc(self, 'images/22f5884fd42346258d0a2acd2e9d848d.png'),\n      openHumusSacos: openBySrc(self, 'images/f9fa743a97844d5617aecd6c0586c0b9.png'),\n      openHumusLiquido: openBySrc(self, 'images/c530b1f13af8f6317bc3b96844dedc8e.png'),\n      openForestalJoven: openBySrc(self, 'images/8849a11ed509f7ee64ed7273a916c0a0.jpg'),\n      openForestalDuo: openBySrc(self, 'images/5fa5cf66e1defabe338478ef81c0ec41.jpg'),\n      lbOpen: s.lb >= 0,\n      lb: s.lb >= 0 ? { src: FLAT[s.lb].src, cap: FLAT[s.lb].cap, group: FLAT[s.lb].group, pos: (s.lb + 1) + ' of ' + FLAT.length } : { src: '', cap: '', group: '', pos: '' },\n      lbClose: function () { self.setState({ lb: -1 }); },\n      lbPrev: function () { self.setState({ lb: (self.state.lb - 1 + FLAT.length) % FLAT.length }); },\n      lbNext: function () { self.setState({ lb: (self.state.lb + 1) % FLAT.length }); },\n      lbKey: function (e) {\n        if (e.key === 'Escape') { e.preventDefault(); self.setState({ lb: -1 }); }\n        else if (e.key === 'ArrowLeft') { e.preventDefault(); self.setState({ lb: (self.state.lb - 1 + FLAT.length) % FLAT.length }); }\n        else if (e.key === 'ArrowRight') { e.preventDefault(); self.setState({ lb: (self.state.lb + 1) % FLAT.length }); }\n      },\n      sent: !!s.sent,\n      notSent: !s.sent,\n      submit: function (e) { e.preventDefault(); self.setState({ sent: true }); },\n      again: function () { self.setState({ sent: false }); },\n      reqA: function () { self.setState({ prod: 'A', psent: false }); },\n      reqO: function () { self.setState({ prod: 'O', psent: false }); },\n      waA: waLink(waTpl('ABONON')),\n      waO: waLink(waTpl('ORGANIK ON')),\n      waGen: waLink('Hello, I\\'m interested in your products. I\\'m ___ from ___ and I need ___.'),\n      pickA: function () { self.setState({ prod: 'A' }); },\n      pickO: function () { self.setState({ prod: 'O' }); },\n      pickB: function () { self.setState({ prod: 'B' }); },\n      chipA: { cls: s.prod === 'A' ? 'chip on' : 'chip', pressed: s.prod === 'A' ? 'true' : 'false' },\n      chipO: { cls: s.prod === 'O' ? 'chip on' : 'chip', pressed: s.prod === 'O' ? 'true' : 'false' },\n      chipB: { cls: s.prod === 'B' ? 'chip on' : 'chip', pressed: s.prod === 'B' ? 'true' : 'false' },\n      prodName: PNAME[s.prod],\n      cantHint: s.prod === 'A' ? 'Example: 20 bags' : s.prod === 'O' ? 'Example: 4 gallons' : 'Example: 20 bags and 4 gallons',\n      pSent: !!s.psent,\n      pNotSent: !s.psent,\n      pd: s.pd || { nombre: '', producto: '', telefono: '' },\n      pWaSent: s.pd ? waLink(waFilled(s.pd.producto, s.pd)) : '',\n      pMail: s.pd ? mailFilled(s.pd.producto, s.pd) : '',\n      pSubmit: function (e) {\n        e.preventDefault();\n        var d = readForm(e.target.closest ? (e.target.closest('form') || e.target) : e.target);\n        d.producto = PNAME[self.state.prod];\n        self.setState({ psent: true, pd: d });\n      },\n      pAgain: function () { self.setState({ psent: false, pd: null }); },\n      copy1Label: label('m1'),\n      copy2Label: label('m2')\n    };\n  }\n}\n" + '\n;return Component;'))();
+var comp = new Component({}); window.__comp = comp; comp.componentDidMount && comp.componentDidMount();
+window.__comp = comp;
+function bind(root){
+  root.querySelectorAll('*').forEach(function(el){
+    Array.from(el.attributes).forEach(function(a){});
+  });
+}
+window.__rerender = function(){
+  var y = scrollY, root = document.getElementById('root'), tpl = document.getElementById('tpl').content;
+  var frag = document.createDocumentFragment(), vals = comp.renderVals();
+  tpl.childNodes.forEach(function(c){ build(c, [vals], frag); });
+  root.replaceChildren(frag);
+  // attach handlers from data-on-* attributes
+  root.querySelectorAll('*').forEach(function(el){});
+  scrollTo(0, y);
+};
+// patch build to understand data-on-*
+var _b = build;
+build = function(node, scope, out){
+  if (node.nodeType === 1) {
+    var ons = Array.from(node.attributes).filter(function(a){ return a.name.indexOf('data-on-') === 0; });
+    if (ons.length) {
+      var before = out.childNodes.length; _b(node, scope, out);
+      var el = out.childNodes[before];
+      ons.forEach(function(a){
+        el.removeAttribute(a.name);
+        var fn = interp(a.value, scope);
+        if (typeof fn === 'function') el.addEventListener(a.name.slice(8), fn);
+        else window.__badHandlers.push(a.name + '=' + a.value);
+      });
+      return;
+    }
+  }
+  _b(node, scope, out);
+};
+window.__rerender();
+</script></body></html>
